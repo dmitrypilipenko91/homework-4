@@ -1,20 +1,22 @@
-const pubStorage = {};
 class HashStorageClass {
+  constructor() {
+    this.pubStorage = {};
+  }
   addValue ( key,value ) {
-    pubStorage[key] = value;
+    this.pubStorage[key] = value;
   }
   getValue ( key ) {
-    return pubStorage[key];
+    return this.pubStorage[key];
   }
   deleteValue ( key ) {
-    if ( key in pubStorage ) {
-      delete pubStorage[key];
+    if ( key in this.pubStorage ) {
+      delete this.pubStorage[key];
       return true;
     }
     return false;
   }
   getKeys () {
-    return Object.keys( pubStorage );
+    return Object.keys( this.pubStorage );
   }
 }
 
