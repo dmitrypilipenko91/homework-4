@@ -12,28 +12,22 @@ function calculateVowels(str) {
 
 function calculateVowels2(str) {
     const vowels = { А: true, И: true, О: true, У: true, Ы: true, Э: true, Е: true, Ё: true, Ю: true, Я: true };
-    let count = 0;
     let letters = str.toUpperCase().split("");
     function calcVowels2 (val) { 
-      if (val in vowels) {
-        count ++;
-        return true;
+      return (val in vowels);
     }
-    }
-    letters.filter(calcVowels2); 
-    return count;
+    return letters.filter(calcVowels2).length; 
  }
 
 function calculateVowels3(str) {
     const vowels = { А: true, И: true, О: true, У: true, Ы: true, Э: true, Е: true, Ё: true, Ю: true, Я: true };
-    let count = 0;
     let letters = str.toUpperCase().split("");
     function calcVowels3 (res,val) { 
       if (val in vowels)
-        count ++;
+        res ++;
+      return res;  
     }
-    letters.reduce(calcVowels3,0); 
-    return count;
+    return letters.reduce(calcVowels3, 0); 
  }
 
 
