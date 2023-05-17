@@ -1,14 +1,19 @@
-let wrapH1 = function buildH1Wrapper(str) {
-    let prefix = "<h1>";
-    let postfix = "</h1>";
-    str = str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-    let result = prefix + str + postfix;
-    return result
+function buildWrapper (tag) {
+    return function (str) {
+        return `<${tag}>${replaceSymbols(str)}</${tag}>`
+    }
 }
-let wrapP = function buildPWrapper(str) {
-    let prefix = "<p>";
-    let postfix = "</p>";
-    str = str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&apos;").replace(/"/g, "&quot;");
-    let result = prefix + str + postfix;
-    return result
+function replaceSymbols(str) {
+    return str.replace(/&/g, "&amp;")
+               .replace(/</g, "&lt;")
+               .replace(/>/g, "&gt;")
+               .replace(/'/g, "&apos;")
+               .replace(/"/g, "&quot;");
 }
+let wrapH1 = buildWrapper("H1");
+let wrapP = buildWrapper("P");
+
+console.log( wrapH1("СТИХИ") );
+console.log( wrapP("Однажды в студёную зимнюю пору") );
+console.log( wrapP("Вкусные M&M's") );
+
